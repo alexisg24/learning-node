@@ -1,4 +1,4 @@
-const buildMakePerson = ({ getUUID, getAge }: { getUUID: Function, getAge: Function }) => {
+export const buildMakePerson = ({ getUUID, getAge }: { getUUID: () => string, getAge: (birthdate: string) => number }) => {
   return ({ name, birthdate }: { name: string, birthdate: string }) => {
     return {
       id: getUUID(),
@@ -7,8 +7,4 @@ const buildMakePerson = ({ getUUID, getAge }: { getUUID: Function, getAge: Funct
       age: getAge(birthdate)
     }
   }
-}
-
-export default {
-  buildMakePerson
 }
