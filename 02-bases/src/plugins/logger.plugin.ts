@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import winston from 'winston'
 const { combine, timestamp, json } = winston.format
 
-const logger = winston.createLogger({
+export const logger = winston.createLogger({
   level: 'info',
   format: combine(
     timestamp(),
@@ -22,12 +23,12 @@ logger.add(new winston.transports.Console({
   format: winston.format.simple()
 }))
 
-export default function buildLogger (service) {
+export default function buildLogger (service: any) {
   return {
-    log: (message) => {
+    log: (message: any) => {
       logger.log('info', { message, service })
     },
-    error: (message) => {
+    error: (message: any) => {
       logger.error('error', { message, service })
     }
   }
